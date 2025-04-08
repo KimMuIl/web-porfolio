@@ -1,70 +1,65 @@
-<p align="center">
-  <h1 align="center">Developer's Portfolio ✨</h1>
+# 👋 자기소개
 
-  <p align="center">
-Profolio는 개발자를 위한, 쉽고 빠르게 제작 할 수 있는 정적 포트폴리오 템플릿 입니다. <br/>Github 페이지로 호스팅 됩니다. <br/>웹 사이트는 <a href="https://congchu.github.io/web-porfolio/">DEMO</a>에서 확인하실 수 있습니다.
-  <br/>
-  <br/> 더 많은 템플릿은 <a href="https://github.com/congchu/portfolio-collection" >portfolio-collection</a> 저장소에서 보실 수 있습니다.
-    <br/>
-    <br/>
-    <img src="https://img.shields.io/badge/-Bootstrap-05122A?style=flat&logo=bootstrap&logoColor=563D7C"/>
-    <img src="https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS3&logoColor=1572B6"/>
-    <img src="https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5"/>
-  <br/>
-  <br/>
-  <img src="https://github.com/congchu/web-porfolio/blob/main/demo/20210428.gif?raw=true"/>
-</p>
+안녕하세요! 저는 [이름]입니다.  
+[간단한 자기소개 문구 - 예: "끊임없이 배우고 성장하는 주니어 개발자입니다."]  
+현재는 [학교/소속], [학년/직무], [전공 또는 관심 분야]에 집중하고 있습니다.
 
-## Overview ⭐️
+---
 
-- static website로 Github pages 활용한 웹 호스팅 가능
-- 개발자 맞춤형 포트폴리오 웹 페이지
-- 제작자 표기 시, 무료로 활용가능
+# 🌟 비전
 
-## Prerequisites 🍪
+저는 [자신의 비전이나 목표를 간단하게 작성 - 예: "IoT와 AI를 융합한 스마트 환경 구축에 기여하고 싶습니다."]  
+장기적으로는 [원하는 커리어 방향 - 예: "창의적인 문제 해결력을 갖춘 소프트웨어 엔지니어가 되고자 합니다."]
 
-- PC에 git이 설치되어 있어야하며, Github 계정이 있어야 합니다.
-- HTML 문법을 몰라도 텍스트만 교체하여 활용 가능합니다.
-- HTML 문법을 알면 레이아웃이나 디자인을 변경할 수 있습니다.
-- CSS를 몰라도 제작 가능하지만, CSS에 친숙하다면 디자인도 자유롭게 변경할 수 있습니다.
+---
 
-## Setup And Deployment 🔧
+# 💼 프로젝트 쇼케이스
 
-1. 내 프로젝트로 Fork합니다.
-2. repository를 clone하여 로컬로 내려받습니다.
+| 프로젝트명 | 설명 | 주요 기술 | 링크 |
+|------------|------|-----------|------|
+| **프로젝트 A** | [간단한 설명] | `React`, `Node.js`, `MongoDB` | [GitHub Link](https://github.com/username/project-a) |
+| **프로젝트 B** | [간단한 설명] | `Python`, `Flask`, `OpenAI API` | [GitHub Link](https://github.com/username/project-b) |
+| **프로젝트 C** | [간단한 설명] | `C++`, `Arduino`, `IoT` | [GitHub Link](https://github.com/username/project-c) |
 
-   ```
-   git clone {저장소URL}
-   ```
+> 🔗 더 많은 프로젝트는 [Repositories](https://github.com/username?tab=repositories)에서 확인하실 수 있습니다.
 
-3. 내용을 원하는대로 수정합니다.
-4. github commit & push 합니다.
+---
 
-```bash
-git commit -m 'initial project'
-git push - u origin master
-```
+# 🛠 기술 스택
 
-6. github Settings에서 pages로 이동하여, Source를 main branch로 바꿔줍니다.
-7. publish 되었다는 URL로 접속하여 확인합니다 (시간이 좀 걸리니, 5분정도 기다려주세요)
+### 💻 언어
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
 
-## Documentation 📑
+### 🔧 프레임워크 & 라이브러리
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)
 
-튜토리얼 문서는 [웹 포트폴리오 제작 튜토리얼](https://www.notion.so/cucus/85e3bec77d904f1fa282cec4756232c3)에서 확인해주세요.
+### 📦 도구 & 플랫폼
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
 
-## Deploy History 🌳
+---
 
-2021-12-28
+# 🎓 학업 성과 및 자격증
 
-- 지킬 셋팅 제거
-- 커스텀 도메인 연결 제거
-- 데모 사이트 및 이미지 경로 변경
+- 🏅 정보처리기능사 (2023)
+- 🏅 한국어문회 한자 2급 (2022)
+- 📚 **졸업논문**: "스마트 홈을 위한 IoT 기기 개발 및 구현"
+- 📚 **학업 성과**: 전공 평점 4.2 / 4.5 (최우수상 수상)
 
-2021-04-22
+---
 
-- 전체 레이아웃 수정
-- header 사진 변경
+# 📬 연락처 & 소셜 링크
 
-2021-04-20
+- 📧 Email: [youremail@example.com]
+- 💼 LinkedIn: [https://linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+- 🌐 Portfolio Site: [https://your-portfolio.com](https://your-portfolio.com)
+- 🐦 Twitter: [@yourhandle](https://twitter.com/yourhandle)
+- 📍 GitHub: [https://github.com/username](https://github.com/username)
 
-- 프로젝트 생성
+---
+
+> 이 포트폴리오는 항상 업데이트 중입니다. 관심 가져주셔서 감사합니다!
