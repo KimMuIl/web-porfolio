@@ -1,8 +1,8 @@
 # 👋 자기소개
 
-안녕하세요! 저는 [이름]입니다.  
-[간단한 자기소개 문구 - 예: "끊임없이 배우고 성장하는 주니어 개발자입니다."]  
-현재는 [학교/소속], [학년/직무], [전공 또는 관심 분야]에 집중하고 있습니다.
+안녕하세요! 저는 프론트 엔드 개발자 김무일 입니다.  
+고등학교 1학년 스크레치를 시작으로 코딩의 신기함을 보고 개발자의 길을 걷기 시작했습니다.  
+
 
 ---
 
@@ -17,7 +17,7 @@
 
 | 프로젝트명 | 설명 | 주요 기술 | 링크 |
 |------------|------|-----------|------|
-| **프로젝트 A** | [간단한 설명] | `React`, `Node.js`, `MongoDB` | [GitHub Link](https://github.com/username/project-a) |
+| **냉장GO!** | [간단한 설명] | `React`, `Node.js`, `MongoDB` | [GitHub Link](https://github.com/username/project-a) |
 | **프로젝트 B** | [간단한 설명] | `Python`, `Flask`, `OpenAI API` | [GitHub Link](https://github.com/username/project-b) |
 | **프로젝트 C** | [간단한 설명] | `C++`, `Arduino`, `IoT` | [GitHub Link](https://github.com/username/project-c) |
 
@@ -54,7 +54,7 @@
 
 # 📬 연락처 & 소셜 링크
 
-- 📧 Email: [youremail@example.com]
+- 📧 Email: [kimmuil4290@gmail.com]
 - 💼 LinkedIn: [https://linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
 - 🌐 Portfolio Site: [https://your-portfolio.com](https://your-portfolio.com)
 - 🐦 Twitter: [@yourhandle](https://twitter.com/yourhandle)
