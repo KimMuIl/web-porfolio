@@ -11,7 +11,6 @@
 # 기술 스택
 
 - 언어: Python, JavaScript, C++, C#, Android Studio
-- 프레임워크/라이브러리:
 - 도구: Visual Studio Code, Arduino
 - 네트워크: CIsco Packet Tracer
 -
