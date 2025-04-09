@@ -13,7 +13,6 @@
 - 언어: Python, JavaScript, C++, C#, Android Studio
 - 도구: Visual Studio Code, Arduino
 - 네트워크: CIsco Packet Tracer
--
 
 # 프로젝트
 
