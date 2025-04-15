@@ -11,9 +11,9 @@
 ### IP Address Classes
 N : Network number   
 H : Host number
-- **class A :** N H H H /8
-- **class B :** N N H H /16
-- **class C :** N N N H /24
+- **class A :** N  H  H  H /8
+- **class B :** N  N  H  H /16
+- **class C :** N  N  N  H /24
 - **class D :** for multicast
 - **class A :** for research
 ### IP Address Bit Patterns
@@ -28,13 +28,9 @@ H : Host number
   172.16.0.0 ~ 172.31.255.255.(172.16.0.0/12)   
   192.168.0.0 ~ 192.168.255.255 (192.168.0.0/16)
 
-- **서브넷 마스크 계산법**: 서브넷 마스크를 이용한 네트워크 분할 방법
-
 ### VLAN
 - 부서별로 통신을 분리하여 네트워크 효율성을 증가시키는 기술
 
-### ARP (주소 해석 프로토콜)
-- IP 주소를 MAC 주소로 변환하는 프로토콜
 
 ---
 
@@ -42,7 +38,7 @@ H : Host number
 
 ### [실습 1] 장비 초기값
 - **목표**: 장비들의 초기값 주기   
-- **구성도**: 
+- **구성도**   
     - 라우터 1대   
 ```bash
 Router>en                                     //관리자 모드로 전환
@@ -56,8 +52,24 @@ Router(config)#exit                           //현 상태에서 밖으로 나�
 Router#copy running-config startup-config     //저장 명령어
 ```
 ### [실습 2] 백업 방법
-- **목표**: 장비들 백업 방법   
-- **구성도**: 
+- **목표**: 장비들 백업  
+- **구성도**   
     - 라우터 1대, TFTP서버 1대   
 - **방법 1**
-
+```bash
+Router#copy running-config tftp:
+Address or name of remote host[]? 예시)192.168.1.10               // (TFTP서버 주소 값)
+Destination filename [Router-config]? 예시)Router-20250317-config // (파일 이름 설정)
+```
+- **방법 2**
+```bash
+Router#copy running-config flash:
+Destination filename [running-config]? 예시)20250317-config       // (파일 이름 설정)
+Building configuration...
+[ok]
+//백업 하기
+Router#copy flash: running-config
+Source filename[]? 예시)20250317-config
+```
+- **방법 3**
+  - 메보장에 running-config를 복사해서 붙여넣기
