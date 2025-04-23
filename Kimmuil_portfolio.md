@@ -73,3 +73,5 @@ Source filename[]? 예시)20250317-config
 ```
 - **방법 3**
   - 메보장에 running-config를 복사해서 붙여넣기
+
+### [실습 2] 백업 방법
