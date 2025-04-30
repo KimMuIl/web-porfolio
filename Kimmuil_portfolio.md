@@ -176,3 +176,223 @@ Router(config)# access-list 110 deny ip any any
 Router(config)# interface fastEthernet 0/1
 Router(config-if)# ip access-group 110 in
 ```
+---
+
+## [실습7] VLAN (Virtual LAN)
+
+### VLAN이란?
+> **VLAN (Virtual Local Area Network)**은 하나의 물리적 네트워크를 논리적으로 여러 개의 가상 네트워크로 분할하는 기술  
+> 네트워크를 부서별, 기능별로 구분하여 보안성과 효율성을 높임
+
+
+### VLAN의 장점
+- 브로드캐스트 도메인 분리
+- 보안 강화
+- 트래픽 감소
+- 관리 효율성 향상
+
+
+### 실습 목표
+- VLAN 생성 및 포트 지정
+- PC 간 통신 테스트
+
+
+### 구성도
+- **스위치 1대**
+- **PC 2대**
+- **VLAN 10 (예: Sales)**  
+- **VLAN 20 (예: HR)**
+
+
+### 설정 명령어 (스위치 기준)
+
+```bash
+Switch> enable
+
+! VLAN 생성 (vlan database 명령어 사용)
+Switch# vlan database
+Switch(vlan)# vlan 10 name Sales
+Switch(vlan)# vlan 20 name HR
+Switch(vlan)# exit
+
+! 포트 VLAN 지정
+Switch# conf t
+Switch(config)# int fa 0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+Switch(config-if)# exit
+
+Switch(config)# int fa 0/2
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 20
+Switch(config-if)# exit
+
+! 설정 확인
+Switch# show vlan brief
+```
+
+### 통신 테스트
+- **같은 VLAN끼리** 통신 → 가능해야 함
+- **다른 VLAN끼리** 통신 → 라우터나 L3 스위치 설정 없이는 불가 (→ **Inter-VLAN Routing 필요**)
+
+---
+
+
+## [실습8] Trunk 설정
+
+### Trunk란?
+> **Trunk 포트**는 여러 VLAN의 트래픽을 하나의 포트를 통해 전달하기 위한 설정  
+> 주로 **스위치 간** VLAN 정보를 유지하며 연결할 때 사용됨
+
+
+### Trunk의 특징
+- 기본 동작 프로토콜: **802.1Q**
+- 하나의 포트에서 **여러 VLAN의 프레임**을 태깅하여 전송
+- Native VLAN은 기본적으로 **VLAN 1**
+
+
+### 실습 목표
+- 스위치 간 연결 포트를 Trunk로 설정
+- VLAN 정보가 올바르게 전달되는지 확인
+
+
+### 구성도
+- **스위치 2대**
+- **PC 2대 (각 VLAN에 연결)**  
+- **VLAN 10: Sales**, **VLAN 20: HR**
+
+
+### 설정 명령어
+
+```bash
+Switch1> enable
+Switch1# configure terminal
+
+! 포트 Trunk 설정 (스위치 간 연결 포트)
+Switch1(config)# interface fastEthernet 0/24
+Switch1(config-if)# switchport mode trunk
+Switch1(config-if)# switchport trunk encapsulation dot1q   // (필요 시)
+Switch1(config-if)# exit
+
+! VLAN 생성
+Switch1# vlan database
+Switch1(vlan)# vlan 10 name Sales
+Switch1(vlan)# vlan 20 name HR
+Switch1(vlan)# exit
+
+! PC 연결 포트에 VLAN 할당
+Switch1(config)# interface fastEthernet 0/1
+Switch1(config-if)# switchport mode access
+Switch1(config-if)# switchport access vlan 10
+Switch1(config-if)# exit
+```
+
+```bash
+Switch2> enable
+Switch2# configure terminal
+
+! 포트 Trunk 설정
+Switch2(config)# interface fastEthernet 0/24
+Switch2(config-if)# switchport mode trunk
+Switch2(config-if)# switchport trunk encapsulation dot1q   // (필요 시)
+Switch2(config-if)# exit
+
+! VLAN 생성
+Switch2# vlan database
+Switch2(vlan)# vlan 10 name Sales
+Switch2(vlan)# vlan 20 name HR
+Switch2(vlan)# exit
+
+! PC 연결 포트에 VLAN 할당
+Switch2(config)# interface fastEthernet 0/2
+Switch2(config-if)# switchport mode access
+Switch2(config-if)# switchport access vlan 10
+Switch2(config-if)# exit
+```
+
+
+### 통신 테스트
+- **같은 VLAN (예: VLAN 10)**에 속한 PC는 **스위치가 달라도 통신 가능**
+- **다른 VLAN**은 Trunk만으로 통신 불가 → **라우팅 필요 (Inter-VLAN Routing)**
+
+
+### Trunk 설정 확인
+```bash
+Switch# show interfaces trunk
+```
+---
+
+## [실습9] VTP (VLAN Trunking Protocol)
+
+### VTP란?
+> **VTP (VLAN Trunking Protocol)**은 스위치 간 VLAN 정보를 **자동으로 공유**하기 위한 Cisco 독자 프로토콜  
+> VLAN 정보를 수동으로 반복 생성할 필요 없이 **중앙에서 관리**
+
+
+### VTP의 동작 모드
+| 모드        | 설명 |
+|-------------|------|
+| **Server**  | VLAN 생성/수정 가능, 다른 스위치에 정보 배포 |
+| **Client**  | VLAN 생성/수정 불가, 서버로부터 정보 수신 |
+| **Transparent** | 다른 스위치로 VTP 정보 전달만, 자체 VLAN은 독립 관리 |
+
+
+### 실습 목표
+- VTP Server/Client 설정
+- VLAN 정보가 자동으로 동기화되는지 확인
+
+
+### 구성도
+- **스위치 2대**
+- 스위치 간 **Trunk 연결**
+- VTP Domain: `MYNETWORK`
+
+
+### 설정 명령어
+
+```bash
+! === Switch1 (VTP Server 역할) ===
+Switch1> enable
+Switch1# configure terminal
+Switch1(config)# vtp mode server
+Switch1(config)# vtp domain MYNETWORK
+Switch1(config)# vtp password cisco
+Switch1(config)# exit
+
+! VLAN 생성
+Switch1# vlan database
+Switch1(vlan)# vlan 10 name Sales
+Switch1(vlan)# vlan 20 name HR
+Switch1(vlan)# exit
+```
+
+```bash
+! === Switch2 (VTP Client 역할) === !
+Switch2> enable
+Switch2# configure terminal
+Switch2(config)# vtp mode client
+Switch2(config)# vtp domain MYNETWORK
+Switch2(config)# vtp password cisco
+Switch2(config)# exit
+```
+
+### 주의사항
+- VTP domain, 비밀번호, 버전이 모두 **동일해야** 정보가 동기화됨
+- 반드시 **Trunk 포트로 연결**되어 있어야 VTP 작동
+- Client는 VLAN 생성/삭제 불가
+
+
+### 확인 명령어
+
+```bash
+Switch# show vtp status
+Switch# show vlan brief
+```
+
+
+### 테스트
+- Switch1에서 VLAN 생성 후, Switch2에 자동으로 VLAN이 동기화되는지 확인
+- 동기화가 되지 않을 경우 → 도메인/비밀번호/Trunk 확인
+
+
+
