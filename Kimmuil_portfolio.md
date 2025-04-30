@@ -93,7 +93,7 @@ Source filename[]? 예시)20250317-config
 | 255.255.255.240        | /28      | 14 (2⁴ - 2)            | 16                        |
 | 255.255.255.252        | /30      | 2 (2² - 2)             | 64                        |
 
-### 🧮 계산 공식
+### 계산 공식
 - **호스트 수 계산**: 2ⁿ - 2 (n = 호스트 비트 수)
 - **서브넷 수 계산**: 2ⁿ (n = 빌린 비트 수)
 
@@ -367,7 +367,7 @@ Switch1(vlan)# exit
 ```
 
 ```bash
-! === Switch2 (VTP Client 역할) === !
+! === Switch2 (VTP Client 역할) === 
 Switch2> enable
 Switch2# configure terminal
 Switch2(config)# vtp mode client
@@ -388,11 +388,84 @@ Switch2(config)# exit
 Switch# show vtp status
 Switch# show vlan brief
 ```
+---
+
+## [실습10] Spanning Tree Protocol (STP)
+
+### STP란?
+> **Spanning Tree Protocol (STP)**은 스위치 간 **루프 방지**를 위해 사용되는 프로토콜  
+> 네트워크 상에 **중복 경로가 존재할 때**, 하나의 루프 없는 논리적 경로만 활성화되도록 구성
 
 
-### 테스트
-- Switch1에서 VLAN 생성 후, Switch2에 자동으로 VLAN이 동기화되는지 확인
-- 동기화가 되지 않을 경우 → 도메인/비밀번호/Trunk 확인
+### STP 동작 원리
+- **Root Bridge** 선출 → 트래픽 중심 노드
+- 각 스위치에서 다음과 같은 포트 역할을 가짐:
+  - **Root Port (RP)**: 루트 브릿지로 가는 최단 경로
+  - **Designated Port (DP)**: 세그먼트 내 트래픽 전달 포트
+  - **Blocked Port**: 루프 방지를 위해 차단된 포트
+
+
+### 실습 목표
+- STP 기본 동작 확인
+- Root Bridge 수동 설정
+- 포트 상태 확인
+
+
+### 구성도
+- **스위치 3대**
+- 서로 링 형태로 연결 (루프 구성)
+
+
+### 설정 명령어
+
+```bash
+! === 모든 스위치 공통 ===
+Switch> enable
+Switch# configure terminal
+Switch(config)# spanning-tree mode pvst
+Switch(config)# exit
+```
+
+```bash
+! === Switch1: Root Bridge로 지정 ===
+Switch1# configure terminal
+Switch1(config)# spanning-tree vlan 1 priority 4096
+Switch1(config)# exit
+```
+
+```bash
+! === Switch2, Switch3: 기본 우선순위 (32768) 유지 ===
+(별도 설정 없이 동작 확인)
+```
+
+
+### 테스트 및 확인
+
+- STP 작동 상태 확인
+
+```bash
+Switch# show spanning-tree
+```
+
+- 각 스위치에서 **Root Bridge** 및 포트 상태 확인
+  - Root Port / Designated Port / Blocked Port 확인
+  - 루프가 차단되고 정상 통신 가능한지 확인
+
+
+### STP 참고사항
+- 기본 우선순위: **32768**
+- 값이 **낮을수록** 우선순위가 높아 **Root Bridge로 선출**
+- 루프 복구 시 **포트 전환에 시간 소요** (기본 STP는 느림)
+
+
+### 기타 STP 종류
+| 프로토콜 | 특징 |
+|----------|------|
+| **STP** (802.1D) | 기본 프로토콜, 느린 복구 속도 |
+| **RSTP** (802.1w) | 빠른 복구 시간 |
+| **PVST+** | Cisco 독자, VLAN 별 STP 실행 |
+
+
 
 
 
