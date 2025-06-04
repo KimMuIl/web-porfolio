@@ -9,7 +9,7 @@
 
 # 기술 스택
 
-- 네트워크: [CIsco Packet Tracer](https://github.com/KimMuIl/web-porfolio/blob/main/Kimmuil_portfolio.md)
+- 네트워크 [CIsco Packet Tracer](https://github.com/KimMuIl/web-porfolio/blob/main/Kimmuil_portfolio.md)
 
 # 프로젝트
 
